@@ -1,18 +1,24 @@
 import React from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import MealsDetailScreen from "./MealsDetailScreen";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { CATEGORIES } from "../data/dummydata";
-
-renderGridItem = itemData => {
-  return (
-    <View style={styles.gridItem}>
-      <Text>{itemData.item.title}</Text>
-    </View>
-  );
-};
+import Colors from "../constans/Colors";
 
 const CategoriesScreen = props => {
+  renderGridItem = itemData => {
+    return (
+      <TouchableOpacity
+        style={styles.gridItem}
+        onPress={() => props.navigation.navigate("CategoryMeals")}
+      >
+        <View>
+          <Text>{itemData.item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <FlatList
       keyExtractor={(item, index) => item.id}
@@ -20,6 +26,7 @@ const CategoriesScreen = props => {
       renderItem={renderGridItem}
       numColumns={2}
     />
+
     // <View style={styles.screen}>
     //   <Text>The Categories Sceen</Text>
     //   <Button
@@ -32,6 +39,13 @@ const CategoriesScreen = props => {
   );
 };
 
+CategoriesScreen.navigationOptions = {
+  headerTitle: "Meals Categories",
+  headerStyle: {
+    backgroundColor: Colors.primaryColor
+  }
+};
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -41,7 +55,8 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     margin: 15,
-    height: 120
+    height: 120,
+    width: 200
   }
 });
 
