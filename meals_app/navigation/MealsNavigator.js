@@ -6,8 +6,12 @@ import { createAppContainer } from "react-navigation";
 
 const MealsNavigator = createStackNavigator({
   Categories: CategoriesScreen,
+
   CategoryMeals: {
-    screen: CategoryMealsScreen
+    screen: CategoryMealsScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.getParam("title")
+    })
   },
   MealsDetail: MealsDetailScreen
 });

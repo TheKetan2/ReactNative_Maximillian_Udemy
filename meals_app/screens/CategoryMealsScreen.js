@@ -7,8 +7,6 @@ const CategoryMealsScreen = props => {
   const categoryId = props.navigation.getParam("categoryId");
 
   const selectedCategory = CATEGORIES.find(cat => cat.id === categoryId);
-  CategoryMealsScreen.navigationOptions(selectedCategory.title);
-  // console.log(Object.keys(props.navigation));
   titleHeader = selectedCategory.title;
   return (
     <View style={styles.screen}>
@@ -22,19 +20,27 @@ const CategoryMealsScreen = props => {
   );
 };
 
-CategoryMealsScreen.navigationOptions = navigationData => {
-  // const catId = navigationData.navigation.getParam("categoryId");
-  // const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-  // console.log(catId);
-  // console.log(navigationData.navigation.getParam("categoryId"));
-  return {
-    headerTitle: titleHeader,
-    headerStyle: {
-      backgroundColor: Colors.primaryColor
-    },
-    headerTintColor: "white"
-  };
-};
+// CategoryMealsScreen.navigationOptions = async navigationData => {
+// console.log(
+//   "ID OutputWorking: ",
+//   navigationData.navigation.getParam("categoryId")
+// );
+// );
+// let title = "boom";
+// const catId = await navigationData.navigation.getParam("categoryId");
+// const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+// console.log(selectedCategory.title);
+// title = selectedCategory.title;
+// console.log(catId);
+// console.log(navigationData.navigation.getParam("categoryId"));
+//   return {
+//     headerTitle: titleHeader,
+//     headerStyle: {
+//       backgroundColor: Colors.primaryColor
+//     },
+//     headerTintColor: "white"
+//   };
+// };
 
 const styles = StyleSheet.create({
   screen: {
