@@ -2,6 +2,8 @@ import React from "react";
 import { Text, View, StyleSheet, ImageBackground } from "react-native";
 import { MEALS } from "../data/dummydata";
 import { FlatList } from "react-native-gesture-handler";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 
 const MealsDetailScreen = props => {
   const mealTitle = props.navigation.getParam("title");
@@ -41,7 +43,16 @@ MealsDetailScreen.navigationOptions = ({ navigation }) => {
   const meal = MEALS.find(meal => meal.title === mealTitle);
 
   return {
-    headerTitle: meal.title
+    headerTitle: meal.title,
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Favorite"
+          iconName="ios-star"
+          onPress={() => console.log("Mark as favorite!")}
+        />
+      </HeaderButtons>
+    )
   };
 };
 
@@ -65,7 +76,7 @@ const styles = StyleSheet.create({
   },
   stepsContainer: {
     height: 400,
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: "rgba(255,255,255,1)",
     padding: 10
   },
   steps: {
@@ -73,7 +84,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     padding: 15,
-    backgroundColor: "white"
+    backgroundColor: "rgba(250,250,250,0.6)",
+    elevation: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10
   }
 });
 
