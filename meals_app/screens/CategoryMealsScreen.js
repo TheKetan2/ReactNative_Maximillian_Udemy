@@ -10,13 +10,25 @@ const CategoryMealsScreen = props => {
   const displayedMeals = MEALS.filter(
     meal => meal["categories"].indexOf(categoryId) >= 0
   );
-  console.log(displayedMeals, " ", categoryId, " ");
+  // console.log(displayedMeals, " ", categoryId, " ");
   renderMealItems = itemData => {
     console.log(itemData.item.affordablility);
+    // props.navigation.navigate({
+    //   routeName: "CategoryMeals",
+    //   params: {
+    //     categoryId: itemData.item.id,
+    //     title: itemData.item.title
+    //   }
+    // });
     return (
       <MealItem
         title={itemData.item.title}
-        onSelectMeal={() => {}}
+        onSelectMeal={() =>
+          props.navigation.navigate({
+            routeName: "MealsDetail",
+            params: { title: itemData.item.title }
+          })
+        }
         duration={itemData.item.duration}
         complexity={itemData.item.complexity}
         affordablility={itemData.item.affordablility}

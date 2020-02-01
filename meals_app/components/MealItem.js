@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f5f5f5",
     margin: 10,
-    // padding: 10,
     borderRadius: 10,
     overflow: "hidden"
   },
