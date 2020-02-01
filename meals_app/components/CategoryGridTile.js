@@ -16,7 +16,7 @@ export default function CategoryGridTile(props) {
   return (
     <TouchableCmp style={styles.gridItem} onPress={props.onSelect}>
       <View style={{ ...styles.container, backgroundColor: props.color }}>
-        <Text style={styles.title} numberOfLines={2}>
+        <Text style={styles.title} numberOfLines={1}>
           {props.title}
         </Text>
       </View>
