@@ -13,13 +13,7 @@ const CategoryMealsScreen = props => {
   // console.log(displayedMeals, " ", categoryId, " ");
   renderMealItems = itemData => {
     console.log(itemData.item.affordablility);
-    // props.navigation.navigate({
-    //   routeName: "CategoryMeals",
-    //   params: {
-    //     categoryId: itemData.item.id,
-    //     title: itemData.item.title
-    //   }
-    // });
+
     return (
       <MealItem
         title={itemData.item.title}

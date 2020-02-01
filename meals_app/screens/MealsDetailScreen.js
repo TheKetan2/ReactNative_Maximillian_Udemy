@@ -36,6 +36,15 @@ const MealsDetailScreen = props => {
   );
 };
 
+MealsDetailScreen.navigationOptions = ({ navigation }) => {
+  const mealTitle = navigation.getParam("title");
+  const meal = MEALS.find(meal => meal.title === mealTitle);
+
+  return {
+    headerTitle: meal.title
+  };
+};
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5
   },
   stepsContainer: {
-    height: 300,
+    height: 400,
     backgroundColor: "rgba(0,0,0,0.6)",
     padding: 10
   },
