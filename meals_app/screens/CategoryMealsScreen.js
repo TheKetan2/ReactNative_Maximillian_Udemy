@@ -1,18 +1,37 @@
 import React from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
-import { CATEGORIES } from "../data/dummydata";
+import { CATEGORIES, MEALS } from "../data/dummydata";
+import { FlatList } from "react-native-gesture-handler";
+import MealItem from "../components/MealItem";
 const CategoryMealsScreen = props => {
   const categoryId = props.navigation.getParam("categoryId");
 
-  const selectedCategory = CATEGORIES.find(cat => cat.id === categoryId);
-  titleHeader = selectedCategory.title;
+  // const selectedCategory = CATEGORIES.find(cat => cat.id === categoryId);
+  const displayedMeals = MEALS.filter(
+    meal => meal["categories"].indexOf(categoryId) >= 0
+  );
+  console.log(displayedMeals, " ", categoryId, " ");
+  renderMealItems = itemData => {
+    console.log(itemData.item.affordablility);
+    return (
+      <MealItem
+        title={itemData.item.title}
+        onSelectMeal={() => {}}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordablility={itemData.item.affordablility}
+        img={itemData.item.imgURL}
+      />
+    );
+  };
+
   return (
     <View style={styles.screen}>
-      <Text>{selectedCategory.title}</Text>
-
-      <Button
-        title="Meals Details"
-        onPress={() => props.navigation.navigate("MealsDetail")}
+      <FlatList
+        data={displayedMeals}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderMealItems}
+        style={{ width: "100%" }}
       />
     </View>
   );
