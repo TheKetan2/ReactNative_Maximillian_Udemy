@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, Platform } from "react-native";
 import { CATEGORIES } from "../data/dummydata";
 import Colors from "../constans/Colors";
 let titleHeader = "";
@@ -20,27 +20,13 @@ const CategoryMealsScreen = props => {
   );
 };
 
-// CategoryMealsScreen.navigationOptions = async navigationData => {
-// console.log(
-//   "ID OutputWorking: ",
-//   navigationData.navigation.getParam("categoryId")
-// );
-// );
-// let title = "boom";
-// const catId = await navigationData.navigation.getParam("categoryId");
-// const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
-// console.log(selectedCategory.title);
-// title = selectedCategory.title;
-// console.log(catId);
-// console.log(navigationData.navigation.getParam("categoryId"));
-//   return {
-//     headerTitle: titleHeader,
-//     headerStyle: {
-//       backgroundColor: Colors.primaryColor
-//     },
-//     headerTintColor: "white"
-//   };
-// };
+CategoryMealsScreen.navigationOptions = navigationData => {
+  const catId = navigationData.navigation.getParam("categoryId");
+  const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+  return {
+    headerTitle: selectedCategory.title
+  };
+};
 
 const styles = StyleSheet.create({
   screen: {
