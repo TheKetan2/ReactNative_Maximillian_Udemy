@@ -12,6 +12,27 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import Colors from "../constans/Colors";
 import { Platform } from "react-native";
 
+const defaultStackNavOptions = {
+  headerStyle: {
+    backgroundColor: Colors.primaryColor
+  },
+  headerTintColor: "white"
+};
+const FavNavigator = createStackNavigator(
+  {
+    Favorite: FavoritesScreen,
+    MealsDetail: MealsDetailScreen
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: Colors.primaryColor
+      },
+      headerTintColor: "white"
+    }
+  }
+);
+
 const MealsNavigator = createStackNavigator(
   {
     Categories: {
@@ -24,12 +45,7 @@ const MealsNavigator = createStackNavigator(
     MealsDetail: { screen: MealsDetailScreen }
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: Colors.primaryColor
-      },
-      headerTintColor: "white"
-    }
+    defaultNavigationOptions: defaultStackNavOptions
   }
 );
 
