@@ -1,8 +1,15 @@
 import React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ImageBackground,
+  Platform
+} from "react-native";
 import { MEALS } from "../data/dummydata";
 import { FlatList } from "react-native-gesture-handler";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+
 import HeaderButton from "../components/HeaderButton";
 
 const MealsDetailScreen = props => {
@@ -72,7 +79,8 @@ const styles = StyleSheet.create({
     fontFamily: "open-sans-bold",
     backgroundColor: "rgba(0,0,0,0.6)",
     color: "white",
-    paddingVertical: 5
+    paddingVertical: 5,
+    textAlign: "center"
   },
   stepsContainer: {
     height: 400,
