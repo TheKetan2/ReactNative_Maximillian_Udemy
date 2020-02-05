@@ -12,7 +12,7 @@ export default function MealsList(props) {
         title={itemData.item.title}
         onSelectMeal={() =>
           props.navigation.navigate({
-            routeName: "MealsDetail",
+            routeName: "MealDetail",
             params: { title: itemData.item.title }
           })
         }
