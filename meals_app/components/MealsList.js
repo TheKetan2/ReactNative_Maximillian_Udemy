@@ -2,6 +2,7 @@ import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 
 import MealItem from "../components/MealItem";
+import Colors from "../constans/Colors";
 
 export default function MealsList(props) {
   renderMealItems = itemData => {
@@ -23,6 +24,7 @@ export default function MealsList(props) {
       />
     );
   };
+
   return (
     <View style={styles.list}>
       <FlatList
@@ -34,6 +36,11 @@ export default function MealsList(props) {
     </View>
   );
 }
+
+MealsList.navigationOptions = {
+  tabBarColor: Colors.accentColor,
+  headerStyle: { backgroundColor: "white" }
+};
 
 const styles = StyleSheet.create({
   list: {
