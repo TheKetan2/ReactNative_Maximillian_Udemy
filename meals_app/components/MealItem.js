@@ -1,63 +1,79 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ImageBackground
-} from "react-native";
+} from 'react-native';
 
-export default function MealItem(props) {
-  console.log(props.img);
+import DefaultText from './DefaultText';
+
+const MealItem = props => {
   return (
     <View style={styles.mealItem}>
       <TouchableOpacity onPress={props.onSelectMeal}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
-            <ImageBackground source={{ uri: props.img }} style={styles.bgImage}>
-              <Text style={styles.title}>{props.title}</Text>
+            <ImageBackground
+              source={{ uri: props.image }}
+              style={styles.bgImage}
+            >
+              <View style={styles.titleContainer}>
+                <Text style={styles.title} numberOfLines={1}>
+                  {props.title}
+                </Text>
+              </View>
             </ImageBackground>
           </View>
-          <View style={{ ...styles.mealRow, ...styles.mealDetails }}>
-            <Text>{props.duration}</Text>
-            <Text>{props.complexity.toUpperCase()}</Text>
-            <Text>{props.affordablility.toUpperCase()}</Text>
+          <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <DefaultText>{props.duration}m</DefaultText>
+            <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>{props.affordability.toUpperCase()}</DefaultText>
           </View>
         </View>
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  mealHeader: { height: "85%" },
-  mealDetails: {
-    paddingHorizontal: 10,
-    justifyContent: "space-between",
-    height: "15%"
-  },
   mealItem: {
     height: 200,
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    margin: 10,
+    width: '100%',
+    backgroundColor: '#f5f5f5',
     borderRadius: 10,
-    overflow: "hidden"
-  },
-  mealRow: {
-    flexDirection: "row"
+    overflow: 'hidden',
+    marginVertical: 10
   },
   bgImage: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "flex-end"
+    width: '100%',
+    height: '100%',
+    justifyContent: 'flex-end',
+  },
+  mealRow: {
+    flexDirection: 'row'
+  },
+  mealHeader: {
+    height: '85%'
+  },
+  mealDetail: {
+    paddingHorizontal: 10,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '15%'
+  },
+  titleContainer: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingVertical: 5,
+    paddingHorizontal: 12
   },
   title: {
-    backgroundColor: "rgba(0,0,0, .6)",
-    color: "white",
-    fontSize: 16,
-    fontFamily: "open-sans-bold",
-    paddingVertical: 5,
-    textAlign: "center"
+    fontFamily: 'open-sans-bold',
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center'
   }
 });
+
+export default MealItem;

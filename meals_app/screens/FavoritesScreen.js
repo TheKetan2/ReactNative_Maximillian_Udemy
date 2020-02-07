@@ -1,21 +1,18 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import MealsList from "../components/MealsList";
-import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import HeaderButton from "../components/HeaderButton";
+import React from 'react';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
-import { MEALS } from "../data/dummydata";
+import HeaderButton from '../components/HeaderButton';
+import MealList from '../components/MealList';
+import { MEALS } from '../data/dummy-data';
 
 const FavoritesScreen = props => {
-  const favMeals = MEALS.map(meal => meal);
-  console.log(favMeals.length);
-
-  return <MealsList listData={favMeals} navigation={props.navigation} />;
+  const favMeals = MEALS.filter(meal => meal.id === 'm1' || meal.id === 'm2');
+  return <MealList listData={favMeals} navigation={props.navigation} />;
 };
 
 FavoritesScreen.navigationOptions = navData => {
   return {
-    headerTitle: "Favorite Meals",
+    headerTitle: 'Your Favorites',
     headerLeft: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
@@ -24,7 +21,7 @@ FavoritesScreen.navigationOptions = navData => {
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
-        ></Item>
+        />
       </HeaderButtons>
     )
   };

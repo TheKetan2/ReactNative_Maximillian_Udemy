@@ -1,31 +1,27 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity
-} from 'react-native';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import { CATEGORIES } from "../data/dummydata";
+import CategoryGridTile from "../components/CategoryGridTile";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
-import HeaderButton from '../components/HeaderButton';
-import { CATEGORIES } from '../data/dummy-data';
-import CategoryGridTile from '../components/CategoryGridTile';
+import HeaderButton from "../components/HeaderButton";
 
 const CategoriesScreen = props => {
-  const renderGridItem = itemData => {
+  renderGridItem = itemData => {
     return (
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
-        onSelect={() => {
+        onSelect={() =>
           props.navigation.navigate({
-            routeName: 'CategoryMeals',
+            routeName: "CategoryMeals",
             params: {
-              categoryId: itemData.item.id
+              categoryId: itemData.item.id,
+              title: itemData.item.title
             }
-          });
-        }}
+          })
+        }
       />
     );
   };
@@ -42,7 +38,7 @@ const CategoriesScreen = props => {
 
 CategoriesScreen.navigationOptions = navData => {
   return {
-    headerTitle: 'Meal Categories',
+    headerTitle: "Meals Categories",
     headerLeft: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
@@ -51,7 +47,7 @@ CategoriesScreen.navigationOptions = navData => {
           onPress={() => {
             navData.navigation.toggleDrawer();
           }}
-        />
+        ></Item>
       </HeaderButtons>
     )
   };
@@ -60,8 +56,8 @@ CategoriesScreen.navigationOptions = navData => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignContent: "center"
   }
 });
 
